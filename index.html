@@ -1,211 +1,128 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bananasoft Open - İndirme Merkezi</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 50%, #a18cd1 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .kapsayici {
-            background-color: #ffffff;
-            padding: 36px 32px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 440px;
-            border-top: 8px solid #f59e0b;
-        }
-
-        .baslik-alani {
-            text-align: center;
-            margin-bottom: 28px;
-        }
-
-        h1 {
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(90deg, #d97706, #db2777, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-        }
-
-        p {
-            font-size: 14px;
-            color: #4b5563;
-        }
-
-        .secim-grubu {
-            margin-bottom: 20px;
-            padding: 14px;
-            border-radius: 12px;
-            background-color: #fffbeb;
-            border: 1px solid #fde68a;
-            transition: transform 0.2s;
-        }
-
-        .secim-grubu:hover {
-            transform: translateY(-2px);
-        }
-
-        #programAlani {
-            background-color: #fdf2f8;
-            border-color: #fbcfe8;
-        }
-
-        #surumAlani {
-            background-color: #f3e8ff;
-            border-color: #e9d5ff;
-        }
-
-        label {
-            display: block;
-            font-size: 13px;
-            font-weight: 700;
-            color: #b45309;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        #programAlani label {
-            color: #be185d;
-        }
-
-        #surumAlani label {
-            color: #6d28d9;
-        }
-
-        select {
-            width: 100%;
-            padding: 12px 14px;
-            font-size: 15px;
-            font-weight: 600;
-            color: #1f2937;
-            background-color: #ffffff;
-            border: 2px solid #f59e0b;
-            border-radius: 10px;
-            cursor: pointer;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-
-        #programSecimi {
-            border-color: #ec4899;
-        }
-
-        #surumSecimi {
-            border-color: #8b5cf6;
-        }
-
-        select:focus {
-            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.25);
-        }
-
-        .alt-bilgi {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 12px;
-            color: #9ca3af;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bananasoft Open - İndirme Merkezi</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,sans-serif}
+body{background:linear-gradient(135deg,#38bdf8,#f6d365 40%,#fda085 75%,#a18cd1);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}
+.kapsayici{background:#fff;padding:32px;border-radius:20px;box-shadow:0 15px 35px rgba(0,0,0,.2);width:100%;max-width:430px;border-top:8px solid #0284c7}
+.baslik{text-align:center;margin-bottom:24px}
+h1{font-size:26px;font-weight:800;background:linear-gradient(90deg,#0284c7,#d97706,#db2777,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+p{font-size:14px;color:#4b5563}
+.grup{margin-bottom:16px;padding:12px;border-radius:12px;position:relative}
+label{display:block;font-size:12px;font-weight:700;margin-bottom:6px;text-transform:uppercase}
+.ozel{position:relative;width:100%;user-select:none}
+.secim-btn,select{width:100%;padding:11px 14px;font-size:15px;font-weight:600;color:#1f2937;background:#fff;border:2px solid;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;outline:none}
+.icerik{display:flex;align-items:center;gap:10px}
+.liste{display:none;position:absolute;top:calc(100% + 5px);left:0;width:100%;background:#fff;border:2px solid;border-radius:10px;box-shadow:0 10px 20px rgba(0,0,0,.15);overflow:hidden;z-index:30}
+.oge{display:flex;align-items:center;gap:10px;padding:11px 14px;font-size:15px;font-weight:600;cursor:pointer}
+#osGrup{background:#f0f9ff;border:1px solid #bae6fd;z-index:20}
+#osGrup label{color:#0369a1}
+#osGrup .secim-btn,#osGrup .liste{border-color:#0284c7}
+#osGrup .oge:hover{background:#e0f2fe}
+#dilGrup{background:#fffbeb;border:1px solid #fde68a;z-index:10;display:none}
+#dilGrup label{color:#b45309}
+#dilGrup .secim-btn,#dilGrup .liste{border-color:#f59e0b}
+#dilGrup .oge:hover{background:#fef3c7}
+#prgGrup{background:#fdf2f8;border:1px solid #fbcfe8;display:none}
+#prgGrup label{color:#be185d}
+#prgSec{border-color:#ec4899}
+#srmGrup{background:#f3e8ff;border:1px solid #e9d5ff;display:none}
+#srmGrup label{color:#6d28d9}
+#srmSec{border-color:#8b5cf6}
+.alt{text-align:center;margin-top:16px;font-size:12px;color:#9ca3af}
+</style>
 </head>
 <body>
+<div class="kapsayici">
+    <div class="baslik">
+        <h1>🍌 Bananasoft Open</h1>
+        <p>İndirmek istediğiniz yazılımı adım adım seçin.</p>
+    </div>
 
-    <div class="kapsayici">
-        <div class="baslik-alani">
-            <h1>🍌 Bananasoft Open</h1>
-            <p>İndirmek istediğiniz yazılımı adım adım seçin.</p>
-        </div>
-
-        <!-- 1. Adım: Dil Seçimi -->
-        <div class="secim-grubu">
-            <label for="dilSecimi">1. Dil Seçimi</label>
-            <select id="dilSecimi" onchange="dilKontrol()">
-                <option value="">-- Dil Seçin --</option>
-                <option value="turkce">Türkçe</option>
-            </select>
-        </div>
-
-        <!-- 2. Adım: Program Seçimi -->
-        <div class="secim-grubu" id="programAlani" style="display: none;">
-            <label for="programSecimi">2. Program Seçimi</label>
-            <select id="programSecimi" onchange="programKontrol()">
-                <option value="">-- Program Seçin --</option>
-                <option value="veri-donusturucu">Veri Dönüştürücü</option>
-            </select>
-        </div>
-
-        <!-- 3. Adım: Sürüm Seçimi -->
-        <div class="secim-grubu" id="surumAlani" style="display: none;">
-            <label for="surumSecimi">3. Sürüm Seçimi (Tıklandığında İndirir)</label>
-            <select id="surumSecimi" onchange="surumIndir()">
-                <option value="">-- Sürüm Seçin --</option>
-                <option value="data-calculator/TR/v1.0/VeriDonusturucu1.0.zip">v1.0 (İndir)</option>
-            </select>
-        </div>
-
-        <div class="alt-bilgi">
-            Bananasoft Open Yazılım Arşivi
+    <div class="grup" id="osGrup">
+        <label>1. İşletim Sistemi Seçimi</label>
+        <div class="ozel">
+            <div class="secim-btn" onclick="acKapat('osListe')">
+                <div class="icerik" id="osYazi"><span>-- İşletim Sistemi Seçin --</span></div><span>▼</span>
+            </div>
+            <div class="liste" id="osListe">
+                <div class="oge" onclick="winSec()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#0078D4"><path d="M0 3.45L9.75 2.1v9.45H0m10.95-9.6L24 0v11.4H10.95M0 12.6h9.75v9.45L0 20.7m10.95-8.1H24V24l-12.9-1.8"/></svg>
+                    <span>Windows</span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script>
-        function dilKontrol() {
-            var dil = document.getElementById("dilSecimi").value;
-            var programAlani = document.getElementById("programAlani");
-            var surumAlani = document.getElementById("surumAlani");
+    <div class="grup" id="dilGrup">
+        <label>2. Dil Seçimi</label>
+        <div class="ozel">
+            <div class="secim-btn" onclick="acKapat('dilListe')">
+                <div class="icerik" id="dilYazi"><span>-- Dil Seçin --</span></div><span>▼</span>
+            </div>
+            <div class="liste" id="dilListe">
+                <div class="oge" onclick="trSec()">
+                    <svg width="24" height="16" viewBox="0 0 1200 800" style="border-radius:3px"><rect width="1200" height="800" fill="#E30A17"/><circle cx="425" cy="400" r="200" fill="#fff"/><circle cx="475" cy="400" r="160" fill="#E30A17"/><polygon fill="#fff" points="583,400 764,459 652,305 652,495 764,341"/></svg>
+                    <span>Türkçe</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            if (dil === "turkce") {
-                programAlani.style.display = "block";
-            } else {
-                programAlani.style.display = "none";
-                document.getElementById("programSecimi").value = "";
-                surumAlani.style.display = "none";
-                document.getElementById("surumSecimi").value = "";
-            }
-        }
+    <div class="grup" id="prgGrup">
+        <label>3. Program Seçimi</label>
+        <select id="prgSec" onchange="prgKontrol()">
+            <option value="">-- Program Seçin --</option>
+            <option value="vd">Veri Dönüştürücü</option>
+        </select>
+    </div>
 
-        function programKontrol() {
-            var program = document.getElementById("programSecimi").value;
-            var surumAlani = document.getElementById("surumAlani");
+    <div class="grup" id="srmGrup">
+        <label>4. Sürüm Seçimi (Tıklandığında İndirir)</label>
+        <select id="srmSec" onchange="indir()">
+            <option value="">-- Sürüm Seçin --</option>
+            <option value="data-calculator/TR/v1.0/VeriDonusturucu1.0ForWindows.zip">v1.0 (İndir)</option>
+        </select>
+    </div>
 
-            if (program === "veri-donusturucu") {
-                surumAlani.style.display = "block";
-            } else {
-                surumAlani.style.display = "none";
-                document.getElementById("surumSecimi").value = "";
-            }
-        }
+    <div class="alt">Bananasoft Open Yazılım Arşivi</div>
+</div>
 
-        function surumIndir() {
-            var dosyaYolu = document.getElementById("surumSecimi").value;
-
-            if (dosyaYolu !== "") {
-                var link = document.createElement("a");
-                link.href = dosyaYolu;
-                link.download = "VeriDonusturucu1.0.zip";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-        }
-    </script>
-
+<script>
+function acKapat(id){
+    var el=document.getElementById(id),acik=el.style.display==="block";
+    document.getElementById("osListe").style.display="none";
+    document.getElementById("dilListe").style.display="none";
+    if(!acik)el.style.display="block";
+}
+function winSec(){
+    document.getElementById("osYazi").innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="#0078D4"><path d="M0 3.45L9.75 2.1v9.45H0m10.95-9.6L24 0v11.4H10.95M0 12.6h9.75v9.45L0 20.7m10.95-8.1H24V24l-12.9-1.8"/></svg><span>Windows</span>';
+    document.getElementById("osListe").style.display="none";
+    document.getElementById("dilGrup").style.display="block";
+}
+function trSec(){
+    document.getElementById("dilYazi").innerHTML='<svg width="24" height="16" viewBox="0 0 1200 800" style="border-radius:3px"><rect width="1200" height="800" fill="#E30A17"/><circle cx="425" cy="400" r="200" fill="#fff"/><circle cx="475" cy="400" r="160" fill="#E30A17"/><polygon fill="#fff" points="583,400 764,459 652,305 652,495 764,341"/></svg><span>Türkçe</span>';
+    document.getElementById("dilListe").style.display="none";
+    document.getElementById("prgGrup").style.display="block";
+}
+window.onclick=function(e){
+    if(!e.target.closest('.ozel')){
+        document.getElementById("osListe").style.display="none";
+        document.getElementById("dilListe").style.display="none";
+    }
+}
+function prgKontrol(){
+    var s=document.getElementById("srmGrup");
+    if(document.getElementById("prgSec").value==="vd"){s.style.display="block"}
+    else{s.style.display="none";document.getElementById("srmSec").value=""}
+}
+function indir(){
+    var y=document.getElementById("srmSec").value;
+    if(y!==""){var a=document.createElement("a");a.href=y;a.download="VeriDonusturucu1.0ForWindows.zip";document.body.appendChild(a);a.click();document.body.removeChild(a)}
+}
+</script>
 </body>
 </html>
