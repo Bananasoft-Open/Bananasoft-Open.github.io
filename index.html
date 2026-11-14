@@ -84,7 +84,7 @@ label{display:block;font-size:12px;font-weight:700;margin-bottom:6px;text-transf
         <label>4. Sürüm Seçimi (Tıklandığında İndirir)</label>
         <select id="srmSec" onchange="indir()">
             <option value="">-- Sürüm Seçin --</option>
-            <option value="data-calculator/TR/v1.0/VeriDonusturucu1.0ForWindows.zip">v1.0 (İndir)</option>
+            <option value="https://github.com">v1.0 (8.32 MB - İndir)</option>
         </select>
     </div>
 
@@ -121,7 +121,7 @@ function prgKontrol(){
 }
 function indir(){
     var y=document.getElementById("srmSec").value;
-    if(y!==""){var a=document.createElement("a");a.href=y;a.download="VeriDonusturucu1.0ForWindows.zip";document.body.appendChild(a);a.click();document.body.removeChild(a)}
+    if(y!==""){window.location.href=y}
 }
 </script>
 </body>
