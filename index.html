@@ -2,53 +2,70 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Veri Dönüştürücü İndirme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bananasoft Open - İndirme Merkezi</title>
+    <!-- main.css dosyasını sayfaya bağlar -->
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
-    <!-- 1. Adım: Dil Seçimi -->
-    <select id="dilSecimi" onchange="dilKontrol()">
-        <option value="">-- Dil Seçin --</option>
-        <option value="turkce">Türkçe</option>
-    </select>
+    <div class="kapsayici">
+        <h1>Bananasoft Open</h1>
+        <p>İndirmek istediğiniz yazılımı adım adım seçin.</p>
 
-    <!-- 2. Adım: Program Seçimi -->
-    <select id="programSecimi" style="display: none;" onchange="programKontrol()">
-        <option value="">-- Program Seçin --</option>
-        <option value="veri-donusturucu">Veri Dönüştürücü</option>
-    </select>
+        <!-- 1. Adım: Dil Seçimi -->
+        <div class="secim-grubu">
+            <label for="dilSecimi">1. Dil Seçimi</label>
+            <select id="dilSecimi" onchange="dilKontrol()">
+                <option value="">-- Dil Seçin --</option>
+                <option value="turkce">Türkçe</option>
+            </select>
+        </div>
 
-    <!-- 3. Adım: Sürüm Seçimi (Tıklandığında GitHub'dan indirir) -->
-    <select id="surumSecimi" style="display: none;" onchange="surumIndir()">
-        <option value="">-- Sürüm Seçin --</option>
-        <option value="https://github.com/Bananasoft-Open/bananasoftopen.github.io/raw/refs/heads/main/data-calculator/TR/v1.0/VeriDonusturucu1.0.zip">v1.0</option>
-    </select>
+        <!-- 2. Adım: Program Seçimi -->
+        <div class="secim-grubu" id="programAlani" style="display: none;">
+            <label for="programSecimi">2. Program Seçimi</label>
+            <select id="programSecimi" onchange="programKontrol()">
+                <option value="">-- Program Seçin --</option>
+                <option value="veri-donusturucu">Veri Dönüştürücü</option>
+            </select>
+        </div>
+
+        <!-- 3. Adım: Sürüm Seçimi -->
+        <div class="secim-grubu" id="surumAlani" style="display: none;">
+            <label for="surumSecimi">3. Sürüm Seçimi (Tıklandığında İndirir)</label>
+            <select id="surumSecimi" onchange="surumIndir()">
+                <option value="">-- Sürüm Seçin --</option>
+                <option value="https://github.com">v1.0</option>
+            </select>
+        </div>
+    </div>
 
     <script>
         function dilKontrol() {
             var dil = document.getElementById("dilSecimi").value;
-            var programKutu = document.getElementById("programSecimi");
-            var surumKutu = document.getElementById("surumSecimi");
+            var programAlani = document.getElementById("programAlani");
+            var surumAlani = document.getElementById("surumAlani");
 
             if (dil === "turkce") {
-                programKutu.style.display = "inline-block";
+                programAlani.style.display = "block";
             } else {
-                programKutu.style.display = "none";
-                programKutu.value = "";
-                surumKutu.style.display = "none";
-                surumKutu.value = "";
+                programAlani.style.display = "none";
+                document.getElementById("programSecimi").value = "";
+                surumAlani.style.display = "none";
+                document.getElementById("surumSecimi").value = "";
             }
         }
 
         function programKontrol() {
             var program = document.getElementById("programSecimi").value;
-            var surumKutu = document.getElementById("surumSecimi");
+            var surumAlani = document.getElementById("surumAlani");
 
             if (program === "veri-donusturucu") {
-                surumKutu.style.display = "inline-block";
+                surumAlani.style.display = "block";
             } else {
-                surumKutu.style.display = "none";
-                surumKutu.value = "";
+                surumAlani.style.display = "none";
+                document.getElementById("surumSecimi").value = "";
             }
         }
 
