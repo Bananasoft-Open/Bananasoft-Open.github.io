@@ -1,0 +1,31 @@
+============================================================
+                 VERİ DÖNÜŞTÜRÜCÜ (v1.0)
+============================================================
+
+AÇIKLAMA:
+Veri Dönüştürücü, en küçük dijital veri birimi olan Bit 
+değerlerini hem ondalıklı (SI - 1000 tabanlı) hem de ikili 
+(IEC - 1024 tabanlı) standartlara göre diğer veri birimlerine 
+hızlıca çeviren hafif bir komut satırı (CLI) aracıdır.
+
+DESTEKLENEN DÖNÜŞÜMLER:
+* Bit -> Byte      (1 Byte = 8 Bit)
+* Bit -> Kilobit   (1 Kilobit = 1.000 Bit)
+* Bit -> Kibibit   (1 Kibibit = 1.024 Bit)
+* Bit -> Kibibyte  (1 Kibibyte = 8.192 Bit)
+
+KULLANIM:
+1. "VeriDonusturucu.exe" dosyasına çift tıklayarak başlatın.
+2. Menüden yapmak istediğiniz dönüşüm numarasını (1-4) girip 
+   Enter tuşuna basın.
+3. Dönüştürmek istediğiniz Bit miktarını tam sayı olarak yazın.
+   (Not: Fiziksel ve mantıksal olarak yarım veya negatif bit 
+   bulunmadığı için yalnızca pozitif tam sayılar kabul edilir.)
+4. Programdan çıkmak için menüde "0" yazıp Enter'a basın.
+
+SİSTEM GEREKSİNİMLERİ:
+- İşletim Sistemi: Tüm güncel Windows sürümleri (Windows 8.1, 
+  Windows 10, Windows 11 ve Windows Server 2012 R2+ / 64-bit)
+- Ekstra Python veya kütüphane kurulumu gerektirmez.
+
+============================================================
