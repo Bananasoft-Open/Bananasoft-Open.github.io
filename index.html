@@ -4,16 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bananasoft Open - İndirme Merkezi</title>
-    <!-- main.css dosyasını sayfaya bağlar -->
-    <link rel="stylesheet" href="main.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Canlı sarı, turuncu ve mor geçişli arka plan */
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 50%, #a18cd1 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .kapsayici {
+            background-color: #ffffff;
+            padding: 36px 32px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 440px;
+            border-top: 8px solid #f59e0b;
+        }
+
+        .baslik-alani {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #d97706, #db2777, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        .secim-grubu {
+            margin-bottom: 20px;
+            padding: 14px;
+            border-radius: 12px;
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            transition: transform 0.2s;
+        }
+
+        .secim-grubu:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 2. ve 3. adımlar için farklı vurgu renkleri */
+        #programAlani {
+            background-color: #fdf2f8;
+            border-color: #fbcfe8;
+        }
+
+        #surumAlani {
+            background-color: #f3e8ff;
+            border-color: #e9d5ff;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #b45309;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        #programAlani label {
+            color: #be185d;
+        }
+
+        #surumAlani label {
+            color: #6d28d9;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1f2937;
+            background-color: #ffffff;
+            border: 2px solid #f59e0b;
+            border-radius: 10px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        #programSecimi {
+            border-color: #ec4899;
+        }
+
+        #surumSecimi {
+            border-color: #8b5cf6;
+        }
+
+        select:focus {
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.25);
+        }
+
+        .alt-bilgi {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+    </style>
 </head>
 <body>
 
     <div class="kapsayici">
-        <h1>Bananasoft Open</h1>
-        <p>İndirmek istediğiniz yazılımı adım adım seçin.</p>
+        <div class="baslik-alani">
+            <h1>🍌 Bananasoft Open</h1>
+            <p>İndirmek istediğiniz yazılımı adım adım seçin.</p>
+        </div>
 
-        <!-- 1. Adım: Dil Seçimi -->
+        <!-- 1. Adım: Dil Seçimi (Sarı Tema) -->
         <div class="secim-grubu">
             <label for="dilSecimi">1. Dil Seçimi</label>
             <select id="dilSecimi" onchange="dilKontrol()">
@@ -22,7 +144,7 @@
             </select>
         </div>
 
-        <!-- 2. Adım: Program Seçimi -->
+        <!-- 2. Adım: Program Seçimi (Pembe Tema) -->
         <div class="secim-grubu" id="programAlani" style="display: none;">
             <label for="programSecimi">2. Program Seçimi</label>
             <select id="programSecimi" onchange="programKontrol()">
@@ -31,13 +153,17 @@
             </select>
         </div>
 
-        <!-- 3. Adım: Sürüm Seçimi -->
+        <!-- 3. Adım: Sürüm Seçimi (Mor Tema) -->
         <div class="secim-grubu" id="surumAlani" style="display: none;">
             <label for="surumSecimi">3. Sürüm Seçimi (Tıklandığında İndirir)</label>
             <select id="surumSecimi" onchange="surumIndir()">
                 <option value="">-- Sürüm Seçin --</option>
-                <option value="https://github.com">v1.0</option>
+                <option value="https://github.com">v1.0 (İndir)</option>
             </select>
+        </div>
+
+        <div class="alt-bilgi">
+            Bananasoft Open Yazılım Arşivi
         </div>
     </div>
 
