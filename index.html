@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Veri Dönüştürücü İndirme</title>
+</head>
+<body>
+
+    <!-- 1. Adım: Dil Seçimi -->
+    <select id="dilSecimi" onchange="dilKontrol()">
+        <option value="">-- Dil Seçin --</option>
+        <option value="turkce">Türkçe</option>
+    </select>
+
+    <!-- 2. Adım: Program Seçimi -->
+    <select id="programSecimi" style="display: none;" onchange="programKontrol()">
+        <option value="">-- Program Seçin --</option>
+        <option value="veri-donusturucu">Veri Dönüştürücü</option>
+    </select>
+
+    <!-- 3. Adım: Sürüm Seçimi (Tıklandığında GitHub'dan indirir) -->
+    <select id="surumSecimi" style="display: none;" onchange="surumIndir()">
+        <option value="">-- Sürüm Seçin --</option>
+        <option value="https://github.com/Bananasoft-Open/bananasoftopen.github.io/raw/refs/heads/main/data-calculator/TR/v1.0/VeriDonusturucu1.0.zip">v1.0</option>
+    </select>
+
+    <script>
+        function dilKontrol() {
+            var dil = document.getElementById("dilSecimi").value;
+            var programKutu = document.getElementById("programSecimi");
+            var surumKutu = document.getElementById("surumSecimi");
+
+            if (dil === "turkce") {
+                programKutu.style.display = "inline-block";
+            } else {
+                programKutu.style.display = "none";
+                programKutu.value = "";
+                surumKutu.style.display = "none";
+                surumKutu.value = "";
+            }
+        }
+
+        function programKontrol() {
+            var program = document.getElementById("programSecimi").value;
+            var surumKutu = document.getElementById("surumSecimi");
+
+            if (program === "veri-donusturucu") {
+                surumKutu.style.display = "inline-block";
+            } else {
+                surumKutu.style.display = "none";
+                surumKutu.value = "";
+            }
+        }
+
+        function surumIndir() {
+            var githubUrl = document.getElementById("surumSecimi").value;
+
+            if (githubUrl !== "") {
+                window.location.href = githubUrl;
+            }
+        }
+    </script>
+
+</body>
+</html>
