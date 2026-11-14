@@ -121,7 +121,16 @@ function prgKontrol(){
 }
 function indir(){
     var y=document.getElementById("srmSec").value;
-    if(y!==""){window.location.href=y}
+    if(y!==""){
+        var a=document.createElement("a");
+        a.href=y;
+        a.target="_blank";
+        a.rel="noopener noreferrer";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        document.getElementById("srmSec").value="";
+    }
 }
 </script>
 </body>
