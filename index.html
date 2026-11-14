@@ -13,7 +13,6 @@
         }
 
         body {
-            /* Canlı sarı, turuncu ve mor geçişli arka plan */
             background: linear-gradient(135deg, #f6d365 0%, #fda085 50%, #a18cd1 100%);
             min-height: 100vh;
             display: flex;
@@ -64,7 +63,6 @@
             transform: translateY(-2px);
         }
 
-        /* 2. ve 3. adımlar için farklı vurgu renkleri */
         #programAlani {
             background-color: #fdf2f8;
             border-color: #fbcfe8;
@@ -135,7 +133,7 @@
             <p>İndirmek istediğiniz yazılımı adım adım seçin.</p>
         </div>
 
-        <!-- 1. Adım: Dil Seçimi (Sarı Tema) -->
+        <!-- 1. Adım: Dil Seçimi -->
         <div class="secim-grubu">
             <label for="dilSecimi">1. Dil Seçimi</label>
             <select id="dilSecimi" onchange="dilKontrol()">
@@ -144,7 +142,7 @@
             </select>
         </div>
 
-        <!-- 2. Adım: Program Seçimi (Pembe Tema) -->
+        <!-- 2. Adım: Program Seçimi -->
         <div class="secim-grubu" id="programAlani" style="display: none;">
             <label for="programSecimi">2. Program Seçimi</label>
             <select id="programSecimi" onchange="programKontrol()">
@@ -153,12 +151,12 @@
             </select>
         </div>
 
-        <!-- 3. Adım: Sürüm Seçimi (Mor Tema) -->
+        <!-- 3. Adım: Sürüm Seçimi -->
         <div class="secim-grubu" id="surumAlani" style="display: none;">
             <label for="surumSecimi">3. Sürüm Seçimi (Tıklandığında İndirir)</label>
             <select id="surumSecimi" onchange="surumIndir()">
                 <option value="">-- Sürüm Seçin --</option>
-                <option value="https://github.com">v1.0 (İndir)</option>
+                <option value="data-calculator/TR/v1.0/VeriDonusturucu1.0.zip">v1.0 (İndir)</option>
             </select>
         </div>
 
@@ -196,10 +194,15 @@
         }
 
         function surumIndir() {
-            var githubUrl = document.getElementById("surumSecimi").value;
+            var dosyaYolu = document.getElementById("surumSecimi").value;
 
-            if (githubUrl !== "") {
-                window.location.href = githubUrl;
+            if (dosyaYolu !== "") {
+                var link = document.createElement("a");
+                link.href = dosyaYolu;
+                link.download = "VeriDonusturucu1.0.zip";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
             }
         }
     </script>
